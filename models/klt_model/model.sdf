@@ -1,0 +1,436 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <model name="klt_model">
+    <static>0</static>
+    <link name="klt_link">
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://klt_model/meshes/RL-KLT_6280.stl</uri>
+            <scale>0.0008 0.0008 0.0004</scale>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://klt_model/meshes/RL-KLT_6280.stl</uri>
+            <scale>0.0008 0.0008 0.0004</scale>
+          </mesh>
+        </geometry>
+      </visual>
+    </link>
+    <link name="wheel1">
+      <pose>0.17 0.165 -0.019 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.04</length>
+	        </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.025</length>
+          </cylinder>
+        </geometry>
+        <material>
+	        <ambient>0 0 0 1</ambient>          
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+    <joint name="klt_wheel_1" type="fixed">
+      <pose>0.17 0.165 -0.019 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>wheel1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name="wheel2">
+      <pose>0.17 -0.165 -0.019 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.04</length>
+	        </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.025</length>
+          </cylinder>
+        </geometry>
+        <material>
+	         <ambient>0 0 0 1</ambient>         
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+    <joint name="klt_wheel_2" type="fixed">
+      <pose>0.17 -0.165 -0.019 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>wheel2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name="wheel3">
+      <pose>-0.17 0.165 -0.019 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.04</length>
+	        </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.025</length>
+          </cylinder>
+        </geometry>
+        <material>
+	        <ambient>0 0 0 1</ambient>          
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+    <joint name="klt_wheel_3" type="fixed">
+      <pose>-0.17 0.165 -0.019 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>wheel3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    <link name="wheel4">
+      <pose>-0.17 -0.165 -0.019 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>0.08</radius>
+            <length>0.04</length>
+	        </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>0.04</radius>
+            <length>0.025</length>
+          </cylinder>
+        </geometry>
+        <material>
+	        <ambient>0 0 0 1</ambient>          
+          <diffuse>0 0 0 1</diffuse>
+          <specular>0 0 0 1</specular>
+          <emissive>0 0 0 1</emissive>
+        </material>
+      </visual>
+    </link>
+    <joint name="klt_wheel_4" type="fixed">
+      <pose>-0.17 -0.165 -0.019 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>wheel4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <link name="april_1">
+      <pose>-0.17 -0.16 0.06 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_1_jnt" type="fixed">
+      <pose>-0.17 -0.16 0.06 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>april_1</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_2">
+      <pose>-0.17 0.16 0.06 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_2_jnt" type="fixed">
+      <pose>-0.17 0.16 0.06 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>april_2</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_3">
+      <pose>0.17 0.16 0.06 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_3_jnt" type="fixed">
+      <pose>0.17 0.16 0.06 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>april_3</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_4">
+      <pose>0.17 -0.16 0.06 1.5707 0 0</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_4_jnt" type="fixed">
+      <pose>0.17 -0.16 0.06 1.5707 0 0</pose>
+      <parent>klt_link</parent>
+      <child>april_4</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_5">
+      <pose>0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_5_jnt" type="fixed">
+      <pose>0.237 -0.09 0.06 1.5707 0 1.5707 </pose>
+      <parent>klt_link</parent>
+      <child>april_5</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_6">
+      <pose>-0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_6_jnt" type="fixed">
+      <pose>-0.237 -0.09 0.06 1.5707 0 1.5707 </pose>
+      <parent>klt_link</parent>
+      <child>april_6</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_7">
+      <pose>0.237 0.09 0.06 1.5707 0 1.5707</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_7_jnt" type="fixed">
+      <pose>0.237 0.09 0.06 1.5707 0 1.5707 </pose>
+      <parent>klt_link</parent>
+      <child>april_7</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+    
+    <link name="april_8">
+      <pose>-0.237 0.09 0.06 1.5707 0 1.5707</pose>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.0 0.0 0.0</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <box>
+            <size>0.07 0.07 0.01</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://klt_model/materials/scripts</uri>
+            <uri>model://klt_model/materials/textures</uri>
+            <name>april_tag</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
+    <joint name="april_8_jnt" type="fixed">
+      <pose>-0.237 0.09 0.06 1.5707 0 1.5707 </pose>
+      <parent>klt_link</parent>
+      <child>april_8</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+  </model>
+</sdf>

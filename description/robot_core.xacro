@@ -16,7 +16,7 @@
     <link name="base_link">
 
     </link>
-	
+
 	<!-- left ft slot -->
 	<joint name="left_ft_joint" type="fixed">
 		<parent link="base_link"/>
@@ -377,4 +377,145 @@
 		<mu1 value="0.5"/>
 		<mu2 value="0.5"/>
     </gazebo>
+
+	<joint name="cam_ftt_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="cam_ftt_link"/>
+		<origin xyz="0.088 0.21 0.35" rpy="${pi/2} ${-pi/2} 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint>
+
+	<link name="cam_ftt_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.022"/>
+				<!-- <box size="0.01 0.01 0.77"/> -->
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<joint name="cam_1_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="cam_1_link"/>
+		<origin xyz="0.076 -0.07 0.24" rpy="0 0 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint> 
+
+	<link name="cam_1_link">
+		<visual>
+			<origin xyz="0 0 0.1" rpy="0 0.15 0"/>
+			<geometry>
+				<box size="0.03 0.03 0.03"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<joint name="cam_2_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="cam_2_link"/>
+		<origin xyz="0.076 0.07 0.24" rpy="0 0 0"/>
+		<axis xyz="0 0 -10"/>
+	</joint>
+
+	<link name="cam_2_link">
+		<visual>
+			<origin xyz="0 0 0.1" rpy="0 0.50 0"/>
+			<geometry>
+				<box size="0.03 0.03 0.03"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<joint name="cam_pole_1_link_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="cam_pole_1_link"/>
+		<origin xyz="0.07 0.105 0.03" rpy="0 0 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint>
+
+	<link name="cam_pole_1_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.025"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<joint name="cam_pole_2_link_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="cam_pole_2_link"/>
+		<origin xyz="0.07 -0.125 0.03" rpy="0 0 0"/>
+		<axis xyz="0 0 -1"/>
+	</joint>
+
+	<link name="cam_pole_2_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.025"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
 </robot>
