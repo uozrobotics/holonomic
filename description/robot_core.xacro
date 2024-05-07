@@ -17,11 +17,40 @@
 
     </link>
 
+	<!-- grabber servo -->
+	<joint name="servo_g_joint" type="fixed">
+		<parent link="left_ft_link"/>
+		<child link="servo_g_link"/>
+		<origin xyz="0.01 0.15 0.15" rpy="1.5707 -1.5707 0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="servo_g_link">
+		<visual>
+			<origin xyz="0 0 0.1" rpy="0.0 1.5707 0.0"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/servomotor.stl" scale="0.0030 0.0030 0.0026"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
 	<!-- left ft slot -->
 	<joint name="left_ft_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="left_ft_link"/>
-		<origin xyz="0.185 0.225 0.134" rpy="${pi/2} 0 0"/>
+		<origin xyz="0.185 0.225 0.134" rpy="1.5707 0 0"/>
 		<axis xyz="0 0 1"/>
 	</joint>
 
@@ -46,19 +75,20 @@
     	</xacro:inertial_box>
 	</link>
 
-	<!-- left bt slot -->
-	<joint name="left_bt_joint" type="fixed">
+	<!-- left grabber -->
+	<joint name="grabber_joint" type="revolute"> 
 		<parent link="base_link"/>
-		<child link="left_bt_link"/>
-		<origin xyz="-0.205 0.225 0.134" rpy="${pi/2} 0 0"/>
-		<axis xyz="0 0 1"/>
+		<child link="grabber_link"/>
+		<origin xyz="0.21 -0.001 0.18" rpy="0 0.21 0"/>
+		<axis xyz="0 1 0"/>
+		<limit lower="0.161" upper="1.5707" effort="10" velocity="0.5"/>
 	</joint>
 
-	<link name="left_bt_link">
+	<link name="grabber_link">
 		<visual>
-			<origin xyz="0 0 0.1"/>
+			<origin xyz="-0.02 0.001 -0.02"/>
 			<geometry>
-				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.025"/>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.035"/>
 			</geometry>
 			<material name="white"/>
 		</visual>
@@ -75,78 +105,20 @@
     	</xacro:inertial_box>
 	</link>
 
-	<!-- left ll slot -->
-	<joint name="left_ll_joint" type="fixed">
-		<parent link="base_link"/>
-		<child link="left_ll_link"/>
-		<origin xyz="-0.3 0.105 0.15" rpy="0 ${pi/2}  0"/>
-		<axis xyz="0 0 1"/>
+	<!-- left grabber -->
+	<joint name="hook_joint" type="fixed"> 
+		<parent link="grabber_link"/>
+		<child link="hook_link"/>
+		<origin xyz="0 0 0.3" rpy="0 1.622 0"/>
+		<axis xyz="0 1 0"/>
+		<limit lower="0.161" upper="1.5707" effort="10" velocity="0.5"/>
 	</joint>
 
-	<link name="left_ll_link">
+	<link name="hook_link">
 		<visual>
-			<origin xyz="0 0 0.1"/>
+			<origin xyz="-0.02 0.001 -0.02"/>
 			<geometry>
-				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.04"/>
-			</geometry>
-			<material name="white"/>
-		</visual>
-
-		<collision>
-			<origin xyz="0 0 0.1"/>
-			<geometry>
-				<box size="0.0 0.0 0.0"/>
-			</geometry>
-		</collision>
-
-		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
-        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
-    	</xacro:inertial_box>
-	</link>
-
-
-	<!-- left lr slot -->
-	<joint name="left_lr_joint" type="fixed">
-		<parent link="base_link"/>
-		<child link="left_lr_link"/>
-		<origin xyz="-0.3 -0.125 0.15" rpy="0 ${pi/2}  0"/>
-		<axis xyz="0 0 1"/>
-	</joint>
-
-	<link name="left_lr_link">
-		<visual>
-			<origin xyz="0 0 0.1"/>
-			<geometry>
-				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.04"/>
-			</geometry>
-			<material name="white"/>
-		</visual>
-
-		<collision>
-			<origin xyz="0 0 0.1"/>
-			<geometry>
-				<box size="0.0 0.0 0.0"/>
-			</geometry>
-		</collision>
-
-		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
-        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
-    	</xacro:inertial_box>
-	</link>
-
-	<!-- servo fr -->
-	<joint name="servo_fr_joint" type="fixed">
-		<parent link="base_link"/>
-		<child link="servo_fr_link"/>
-		<origin xyz="0.19717 0.0 0.1" rpy="${pi/2} ${-pi/2} 0"/>
-		<axis xyz="0 0 1"/>
-	</joint>
-
-	<link name="servo_fr_link">
-		<visual>
-			<origin xyz="0 0 0.1"/>
-			<geometry>
-				<mesh filename="package://holonomic/meshes/servomotor.stl" scale="0.0030 0.0030 0.0026"/>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.012"/>
 			</geometry>
 			<material name="white"/>
 		</visual>
@@ -378,10 +350,11 @@
 		<mu2 value="0.5"/>
     </gazebo>
 
+
 	<joint name="cam_ftt_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="cam_ftt_link"/>
-		<origin xyz="0.088 0.21 0.35" rpy="${pi/2} ${-pi/2} 0"/>
+		<origin xyz="0.148 0.21 0.35" rpy="${pi/2} ${-pi/2} 0"/>
 		<axis xyz="0 0 -1"/>
 	</joint>
 
@@ -410,7 +383,7 @@
 	<joint name="cam_1_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="cam_1_link"/>
-		<origin xyz="0.076 -0.07 0.24" rpy="0 0 0"/>
+		<origin xyz="0.148 -0.07 0.24" rpy="0 0 0"/>
 		<axis xyz="0 0 -1"/>
 	</joint> 
 
@@ -438,13 +411,13 @@
 	<joint name="cam_2_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="cam_2_link"/>
-		<origin xyz="0.076 0.07 0.24" rpy="0 0 0"/>
+		<origin xyz="0.148 0.07 0.24" rpy="0 0 0"/>
 		<axis xyz="0 0 -10"/>
 	</joint>
 
 	<link name="cam_2_link">
 		<visual>
-			<origin xyz="0 0 0.1" rpy="0 0.50 0"/>
+			<origin xyz="0 0 0.1" rpy="0 0.70 0"/>
 			<geometry>
 				<box size="0.03 0.03 0.03"/>
 			</geometry>
@@ -466,7 +439,7 @@
 	<joint name="cam_pole_1_link_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="cam_pole_1_link"/>
-		<origin xyz="0.07 0.105 0.03" rpy="0 0 0"/>
+		<origin xyz="0.13 0.105 0.03" rpy="0 0 0"/>
 		<axis xyz="0 0 -1"/>
 	</joint>
 
@@ -494,7 +467,7 @@
 	<joint name="cam_pole_2_link_joint" type="fixed">
 		<parent link="base_link"/>
 		<child link="cam_pole_2_link"/>
-		<origin xyz="0.07 -0.125 0.03" rpy="0 0 0"/>
+		<origin xyz="0.13 -0.125 0.03" rpy="0 0 0"/>
 		<axis xyz="0 0 -1"/>
 	</joint>
 
@@ -503,6 +476,123 @@
 			<origin xyz="0 0 0.1"/>
 			<geometry>
 				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.025"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<!-- left bt slot -->
+	<joint name="left_bt_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="left_bt_link"/>
+		<origin xyz="-0.205 0.225 0.134" rpy="${pi/2} 0 0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="left_bt_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.025"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<!-- left ll slot -->
+	<joint name="left_ll_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="left_ll_link"/>
+		<origin xyz="-0.3 0.105 0.15" rpy="0 ${pi/2}  0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="left_ll_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.04"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+
+	<!-- left lr slot -->
+	<joint name="left_lr_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="left_lr_link"/>
+		<origin xyz="-0.3 -0.125 0.15" rpy="0 ${pi/2}  0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="left_lr_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/2020_AL-Profile.stl" scale="0.001 0.001 0.04"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<box size="0.0 0.0 0.0"/>
+			</geometry>
+		</collision>
+
+		<xacro:inertial_box mass="0.2" x="0.5" y="0.5" z="0.03">
+        	<origin xyz="0 0 0.1" rpy="0 0 0"/>
+    	</xacro:inertial_box>
+	</link>
+
+	<!-- servo fr -->
+	<joint name="servo_fr_joint" type="fixed">
+		<parent link="base_link"/>
+		<child link="servo_fr_link"/>
+		<origin xyz="0.19717 0.0 0.1" rpy="1.5707 -1.5707 0"/>
+		<axis xyz="0 0 1"/>
+	</joint>
+
+	<link name="servo_fr_link">
+		<visual>
+			<origin xyz="0 0 0.1"/>
+			<geometry>
+				<mesh filename="package://holonomic/meshes/servomotor.stl" scale="0.0030 0.0030 0.0026"/>
 			</geometry>
 			<material name="white"/>
 		</visual>
