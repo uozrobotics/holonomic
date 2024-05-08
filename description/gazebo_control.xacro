@@ -6,10 +6,10 @@
 		<sensor type="camera" name="cam_1_link">
 		<update_rate>30.0</update_rate>
 		<camera name="cam_1_link">
-			<horizontal_fov>1.3962634</horizontal_fov>
+			<horizontal_fov>1.5707</horizontal_fov>
 			<image>
-			<width>800</width>
-			<height>800</height>
+			<width>1080</width>
+			<height>1920</height>
 			<format>R8G8B8</format>
 			</image>
 			<clip>
@@ -46,10 +46,10 @@
 		<sensor type="camera" name="cam_2_link">
 		<update_rate>30.0</update_rate>
 		<camera name="cam_2_link">
-			<horizontal_fov>1.3962634</horizontal_fov>
+			<horizontal_fov>1.5707</horizontal_fov>
 			<image>
-			<width>800</width>
-			<height>800</height>
+			<width>1080</width>
+			<height>1920</height>
 			<format>R8G8B8</format>
 			</image>
 			<clip>
@@ -93,5 +93,11 @@
 			<publishTF>true</publishTF>
     	</plugin>
   	</gazebo>
+
+    <gazebo>
+        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+            <parameters>$(find holonomic)/config/mycobot_280_controllers.yaml</parameters>
+        </plugin>
+    </gazebo>
 
 </robot>
