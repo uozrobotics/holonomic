@@ -89,6 +89,62 @@
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
     </spherical_coordinates>
+    <model name='klt_world'>
+      <model name='bots_bento_arena'>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>6 5 0.05</size>
+                <normal>0 0 1</normal>
+                <scale>1 1 1</scale>
+              </box>
+            </geometry>
+            <surface>
+              <friction>
+                <ode>
+                  <mu>100</mu>
+                  <mu2>50</mu2>
+                </ode>
+                <torsional>
+                  <ode/>
+                </torsional>
+              </friction>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+            </surface>
+            <max_contacts>10</max_contacts>
+          </collision>
+          <visual name='visual'>
+            <cast_shadows>0</cast_shadows>
+            <geometry>
+              <box>
+                <size>6 5 0.05</size>
+                <normal>0 0 1</normal>
+                <scale>1 1 1</scale>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>model://bots_bento_arena/materials/scripts/bots_bento_arena.material</uri>
+                <uri>model://bots_bento_arena/materials/textures/</uri>
+                <name>bots_bento_arena/Image</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <enable_wind>0</enable_wind>
+          <kinematic>0</kinematic>
+        </link>
+        <pose>-0 0 0 0 -0 0</pose>
+      </model>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose>-0.056218 0.056252 0 0 -0 0</pose>
+    </model>
     <model name='klt_model'>
       <static>0</static>
       <link name='klt_link'>
@@ -397,17 +453,13 @@
           </limit>
         </axis>
       </joint>
-      <pose>1.57538 -3.08501 0 0 -0 0</pose>
-    </model>
-    <model name='klt_model_0'>
-      <static>0</static>
-      <link name='klt_link'>
+      <link name='april_1'>
+        <pose>-0.17 -0.16 0.06 1.5707 -0 0</pose>
         <collision name='collision'>
           <geometry>
-            <mesh>
-              <uri>model://klt_model/meshes/RL-KLT_6280.stl</uri>
-              <scale>0.0008 0.0008 0.0004</scale>
-            </mesh>
+            <box>
+              <size>0 0 0</size>
+            </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -424,64 +476,18 @@
           </surface>
         </collision>
         <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
           <geometry>
-            <mesh>
-              <uri>model://klt_model/meshes/RL-KLT_6280.stl</uri>
-              <scale>0.0008 0.0008 0.0004</scale>
-            </mesh>
-          </geometry>
-        </visual>
-        <self_collide>0</self_collide>
-        <inertial>
-          <pose>0 0 0 0 -0 0</pose>
-          <inertia>
-            <ixx>1</ixx>
-            <ixy>0</ixy>
-            <ixz>0</ixz>
-            <iyy>1</iyy>
-            <iyz>0</iyz>
-            <izz>1</izz>
-          </inertia>
-          <mass>1</mass>
-        </inertial>
-        <enable_wind>0</enable_wind>
-        <kinematic>0</kinematic>
-      </link>
-      <link name='wheel1'>
-        <pose>0.17 0.165 -0.019 1.5707 -0 0</pose>
-        <collision name='collision'>
-          <geometry>
-            <cylinder>
-              <radius>0.08</radius>
-              <length>0.04</length>
-            </cylinder>
-          </geometry>
-          <max_contacts>10</max_contacts>
-          <surface>
-            <contact>
-              <ode/>
-            </contact>
-            <bounce/>
-            <friction>
-              <torsional>
-                <ode/>
-              </torsional>
-              <ode/>
-            </friction>
-          </surface>
-        </collision>
-        <visual name='visual'>
-          <geometry>
-            <cylinder>
-              <radius>0.04</radius>
-              <length>0.025</length>
-            </cylinder>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
           </geometry>
           <material>
-            <ambient>0 0 0 1</ambient>
-            <diffuse>0 0 0 1</diffuse>
-            <specular>0 0 0 1</specular>
-            <emissive>0 0 0 1</emissive>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -500,10 +506,10 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <joint name='klt_wheel_1' type='fixed'>
-        <pose>0.17 0.165 -0.019 1.5707 -0 0</pose>
+      <joint name='april_1_jnt' type='fixed'>
+        <pose>-0.17 -0.16 0.06 1.5707 -0 0</pose>
         <parent>klt_link</parent>
-        <child>wheel1</child>
+        <child>april_1</child>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -512,14 +518,13 @@
           </limit>
         </axis>
       </joint>
-      <link name='wheel2'>
-        <pose>0.17 -0.165 -0.019 1.5707 -0 0</pose>
+      <link name='april_2'>
+        <pose>-0.17 0.16 0.06 1.5707 -0 0</pose>
         <collision name='collision'>
           <geometry>
-            <cylinder>
-              <radius>0.08</radius>
-              <length>0.04</length>
-            </cylinder>
+            <box>
+              <size>0 0 0</size>
+            </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -536,17 +541,18 @@
           </surface>
         </collision>
         <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
           <geometry>
-            <cylinder>
-              <radius>0.04</radius>
-              <length>0.025</length>
-            </cylinder>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
           </geometry>
           <material>
-            <ambient>0 0 0 1</ambient>
-            <diffuse>0 0 0 1</diffuse>
-            <specular>0 0 0 1</specular>
-            <emissive>0 0 0 1</emissive>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -565,10 +571,10 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <joint name='klt_wheel_2' type='fixed'>
-        <pose>0.17 -0.165 -0.019 1.5707 -0 0</pose>
+      <joint name='april_2_jnt' type='fixed'>
+        <pose>-0.17 0.16 0.06 1.5707 -0 0</pose>
         <parent>klt_link</parent>
-        <child>wheel2</child>
+        <child>april_2</child>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -577,14 +583,13 @@
           </limit>
         </axis>
       </joint>
-      <link name='wheel3'>
-        <pose>-0.17 0.165 -0.019 1.5707 -0 0</pose>
+      <link name='april_3'>
+        <pose>0.17 0.16 0.06 1.5707 -0 0</pose>
         <collision name='collision'>
           <geometry>
-            <cylinder>
-              <radius>0.08</radius>
-              <length>0.04</length>
-            </cylinder>
+            <box>
+              <size>0 0 0</size>
+            </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -601,17 +606,18 @@
           </surface>
         </collision>
         <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
           <geometry>
-            <cylinder>
-              <radius>0.04</radius>
-              <length>0.025</length>
-            </cylinder>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
           </geometry>
           <material>
-            <ambient>0 0 0 1</ambient>
-            <diffuse>0 0 0 1</diffuse>
-            <specular>0 0 0 1</specular>
-            <emissive>0 0 0 1</emissive>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -630,10 +636,10 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <joint name='klt_wheel_3' type='fixed'>
-        <pose>-0.17 0.165 -0.019 1.5707 -0 0</pose>
+      <joint name='april_3_jnt' type='fixed'>
+        <pose>0.17 0.16 0.06 1.5707 -0 0</pose>
         <parent>klt_link</parent>
-        <child>wheel3</child>
+        <child>april_3</child>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -642,14 +648,13 @@
           </limit>
         </axis>
       </joint>
-      <link name='wheel4'>
-        <pose>-0.17 -0.165 -0.019 1.5707 -0 0</pose>
+      <link name='april_4'>
+        <pose>0.17 -0.16 0.06 1.5707 -0 0</pose>
         <collision name='collision'>
           <geometry>
-            <cylinder>
-              <radius>0.08</radius>
-              <length>0.04</length>
-            </cylinder>
+            <box>
+              <size>0 0 0</size>
+            </box>
           </geometry>
           <max_contacts>10</max_contacts>
           <surface>
@@ -666,17 +671,18 @@
           </surface>
         </collision>
         <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
           <geometry>
-            <cylinder>
-              <radius>0.04</radius>
-              <length>0.025</length>
-            </cylinder>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
           </geometry>
           <material>
-            <ambient>0 0 0 1</ambient>
-            <diffuse>0 0 0 1</diffuse>
-            <specular>0 0 0 1</specular>
-            <emissive>0 0 0 1</emissive>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
           </material>
         </visual>
         <self_collide>0</self_collide>
@@ -695,10 +701,10 @@
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
       </link>
-      <joint name='klt_wheel_4' type='fixed'>
-        <pose>-0.17 -0.165 -0.019 1.5707 -0 0</pose>
+      <joint name='april_4_jnt' type='fixed'>
+        <pose>0.17 -0.16 0.06 1.5707 -0 0</pose>
         <parent>klt_link</parent>
-        <child>wheel4</child>
+        <child>april_4</child>
         <axis>
           <xyz>0 0 1</xyz>
           <limit>
@@ -707,13 +713,273 @@
           </limit>
         </axis>
       </joint>
-      <pose>3.53267 -1.80537 0 0 -0 0</pose>
+      <link name='april_5'>
+        <pose>0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0 0 0</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='april_5_jnt' type='fixed'>
+        <pose>0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+        <parent>klt_link</parent>
+        <child>april_5</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <link name='april_6'>
+        <pose>-0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0 0 0</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='april_6_jnt' type='fixed'>
+        <pose>-0.237 -0.09 0.06 1.5707 0 1.5707</pose>
+        <parent>klt_link</parent>
+        <child>april_6</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <link name='april_7'>
+        <pose>0.237 0.09 0.06 1.5707 0 1.5707</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0 0 0</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='april_7_jnt' type='fixed'>
+        <pose>0.237 0.09 0.06 1.5707 0 1.5707</pose>
+        <parent>klt_link</parent>
+        <child>april_7</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <link name='april_8'>
+        <pose>-0.237 0.09 0.06 1.5707 0 1.5707</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0 0 0</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>0.07 0.07 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://klt_model/materials/scripts</uri>
+              <uri>model://klt_model/materials/textures</uri>
+              <name>april_tag</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <inertia>
+            <ixx>1</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>1</iyy>
+            <iyz>0</iyz>
+            <izz>1</izz>
+          </inertia>
+          <mass>1</mass>
+        </inertial>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='april_8_jnt' type='fixed'>
+        <pose>-0.237 0.09 0.06 1.5707 0 1.5707</pose>
+        <parent>klt_link</parent>
+        <child>april_8</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+        </axis>
+      </joint>
+      <pose>0.28481 1.04092 0 0 -0 0</pose>
     </model>
     <state world_name='default'>
-      <sim_time>129 690000000</sim_time>
-      <real_time>148 440319229</real_time>
-      <wall_time>1714742202 728999915</wall_time>
-      <iterations>129690</iterations>
+      <sim_time>114 995000000</sim_time>
+      <real_time>115 400277424</real_time>
+      <wall_time>1715252455 983006840</wall_time>
+      <iterations>114995</iterations>
       <model name='ground_plane'>
         <pose>0 0 0 0 -0 0</pose>
         <scale>1 1 1</scale>
@@ -725,72 +991,100 @@
         </link>
       </model>
       <model name='klt_model'>
-        <pose>1.35042 1.10509 0.099002 0 3e-06 -0.396739</pose>
+        <pose>0.285932 1.04108 0.124003 -6e-06 8e-06 -0.722634</pose>
         <scale>1 1 1</scale>
+        <link name='april_1'>
+          <pose>0.052604 1.0335 0.184006 1.57069 9e-06 -0.722634</pose>
+          <velocity>-1.4e-05 -4.5e-05 -0.000479 0.000265 -4e-06 -6e-06</velocity>
+          <acceleration>-0.077555 -0.001833 -9.24014 -0.011611 -0.091836 0.000442</acceleration>
+          <wrench>-0.077555 -0.001833 -9.24014 0 -0 0</wrench>
+        </link>
+        <link name='april_2'>
+          <pose>0.26424 1.27352 0.184004 1.57069 9e-06 -0.722634</pose>
+          <velocity>-8e-06 -4.5e-05 -0.000409 0.000261 1.8e-05 -6e-06</velocity>
+          <acceleration>-0.065333 -0.001351 -9.20099 -0.012777 -0.029728 -0.000446</acceleration>
+          <wrench>-0.065333 -0.001351 -9.20099 0 -0 0</wrench>
+        </link>
+        <link name='april_3'>
+          <pose>0.519262 1.04866 0.184001 1.57069 9e-06 -0.722634</pose>
+          <velocity>-4e-06 -4.6e-05 -0.000479 0.000258 3.9e-05 -6e-06</velocity>
+          <acceleration>-0.051071 -0.000862 -9.19345 -0.013262 0.030086 -0.001449</acceleration>
+          <wrench>-0.051071 -0.000862 -9.19345 0 -0 0</wrench>
+        </link>
+        <link name='april_4'>
+          <pose>0.307626 0.80864 0.184003 1.57069 8e-06 -0.722634</pose>
+          <velocity>-0 -4.3e-05 -0.000543 0.000256 5.6e-05 -6e-06</velocity>
+          <acceleration>-0.037234 0.000529 -9.20112 -0.013344 0.085708 -8e-06</acceleration>
+          <wrench>-0.037234 0.000529 -9.20112 0 -0 0</wrench>
+        </link>
+        <link name='april_5'>
+          <pose>0.404176 0.816833 0.184002 1.57071 7e-06 0.848066</pose>
+          <velocity>5e-06 -4.3e-05 -0.000551 0.000257 7e-05 -5e-06</velocity>
+          <acceleration>-0.023099 0.001574 -9.20762 -0.01221 0.134502 0.002487</acceleration>
+          <wrench>-0.023099 0.001574 -9.20762 0 -0 0</wrench>
+        </link>
+        <link name='april_6'>
+          <pose>0.048645 1.13032 0.184006 1.57071 7e-06 0.848066</pose>
+          <velocity>1e-05 -4.1e-05 -0.000451 0.000257 8.1e-05 -4e-06</velocity>
+          <acceleration>-0.011897 0.00098 -9.16014 -0.008176 0.180083 0.003113</acceleration>
+          <wrench>-0.011897 0.00098 -9.16014 0 -0 0</wrench>
+        </link>
+        <link name='april_7'>
+          <pose>0.523221 0.951845 0.184001 1.57071 6e-06 0.848066</pose>
+          <velocity>1.1e-05 -4.3e-05 -0.000537 0.000258 9e-05 -5e-06</velocity>
+          <acceleration>-0.001705 0.002379 -9.22489 -0.002325 0.222132 0.002368</acceleration>
+          <wrench>-0.001705 0.002379 -9.22489 0 -0 0</wrench>
+        </link>
+        <link name='april_8'>
+          <pose>0.16769 1.26533 0.184005 1.57071 6e-06 0.848066</pose>
+          <velocity>1.4e-05 -4.1e-05 -0.00043 0.000259 9.9e-05 -5e-06</velocity>
+          <acceleration>0.005055 0.000499 -9.15125 0.004878 0.260533 0.001388</acceleration>
+          <wrench>0.005055 0.000499 -9.15125 0 -0 0</wrench>
+        </link>
         <link name='klt_link'>
-          <pose>1.35042 1.10509 0.099002 0 3e-06 -0.396739</pose>
-          <velocity>-7e-06 -0.00024 -0.00068 0.002491 6e-06 -9e-06</velocity>
-          <acceleration>0.070634 -0.201175 -0.591846 2.11327 0.760521 0.000788</acceleration>
-          <wrench>0.070634 -0.201175 -0.591846 0 -0 0</wrench>
+          <pose>0.285932 1.04108 0.124003 -6e-06 8e-06 -0.722634</pose>
+          <velocity>8e-06 -2.7e-05 -0.000499 0.00026 0.000116 -5e-06</velocity>
+          <acceleration>-0.00317 -8.5e-05 -9.16312 0.014302 0.322437 -0.000416</acceleration>
+          <wrench>-0.00317 -8.5e-05 -9.16312 0 -0 0</wrench>
         </link>
         <link name='wheel1'>
-          <pose>1.57098 1.19158 0.080002 1.5707 3e-06 -0.396739</pose>
-          <velocity>-3e-06 -0.000193 -0.000517 0.002494 -1e-06 -9e-06</velocity>
-          <acceleration>0.055629 -0.161531 -0.563999 2.11315 0.762407 0.00069</acceleration>
-          <wrench>0.055629 -0.161531 -0.563999 0 -0 0</wrench>
+          <pose>0.522568 1.05241 0.105002 1.57069 8e-06 -0.722634</pose>
+          <velocity>2e-05 -2.4e-05 -0.000701 0.000259 8.9e-05 -6e-06</velocity>
+          <acceleration>0.033352 -0.004278 -9.64948 0.013802 0.263264 -0.001239</acceleration>
+          <wrench>0.033352 -0.004278 -9.64948 0 -0 0</wrench>
         </link>
         <link name='wheel2'>
-          <pose>1.44346 0.887216 0.080001 1.5707 3e-06 -0.396739</pose>
-          <velocity>-6e-06 -0.000195 -0.001115 0.002502 -7e-06 -9e-06</velocity>
-          <acceleration>0.055549 -0.16384 -1.15686 2.11047 0.763811 0.0006</acceleration>
-          <wrench>0.055549 -0.16384 -1.15686 0 -0 0</wrench>
+          <pose>0.304319 0.804889 0.105002 1.57069 8e-06 -0.722634</pose>
+          <velocity>1.5e-05 -2.2e-05 -0.000311 0.000254 5.7e-05 -6e-06</velocity>
+          <acceleration>0.025676 0.001984 -8.83957 -0.04711 0.199688 -0.003161</acceleration>
+          <wrench>0.025676 0.001984 -8.83957 0 -0 0</wrench>
         </link>
         <link name='wheel3'>
-          <pose>1.25738 1.32296 0.080002 1.5707 3e-06 -0.396739</pose>
-          <velocity>-0 -0.0002 -4.4e-05 0.002499 -2e-06 -1e-05</velocity>
-          <acceleration>0.060851 -0.168672 -0.064263 2.10964 0.761255 0.000532</acceleration>
-          <wrench>0.060851 -0.168672 -0.064263 0 -0 0</wrench>
+          <pose>0.267546 1.27727 0.105002 1.57069 8e-06 -0.722634</pose>
+          <velocity>1.1e-05 -2.3e-05 -6.8e-05 0.000253 7.4e-05 -7e-06</velocity>
+          <acceleration>0.023362 0.003412 -7.97012 -0.074149 0.237017 -0.003271</acceleration>
+          <wrench>0.023362 0.003412 -7.97012 0 -0 0</wrench>
         </link>
         <link name='wheel4'>
-          <pose>1.12987 1.0186 0.080002 1.5707 3e-06 -0.396739</pose>
-          <velocity>-9e-06 -0.00019 -0.000866 0.002493 -0 -9e-06</velocity>
-          <acceleration>0.05605 -0.159878 -0.61423 2.11133 0.761301 0.000784</acceleration>
-          <wrench>0.05605 -0.159878 -0.61423 0 -0 0</wrench>
+          <pose>0.049296 1.02975 0.105002 1.57069 8e-06 -0.722634</pose>
+          <velocity>2e-06 -2.2e-05 0.000392 0.000277 3.1e-05 -6e-06</velocity>
+          <acceleration>0.003746 -0.001883 -6.03733 0.023559 0.056333 -0.000657</acceleration>
+          <wrench>0.003746 -0.001883 -6.03733 0 -0 0</wrench>
         </link>
       </model>
-      <model name='klt_model_0'>
-        <pose>3.53274 -1.80542 0.099002 -2e-06 2e-06 0.00027</pose>
+      <model name='klt_world'>
+        <pose>-0.056218 0.056252 0 0 -0 0</pose>
         <scale>1 1 1</scale>
-        <link name='klt_link'>
-          <pose>3.53274 -1.80542 0.099002 -2e-06 2e-06 0.00027</pose>
-          <velocity>7e-06 -3e-05 -4.9e-05 0.000268 7.7e-05 7e-06</velocity>
-          <acceleration>0.009676 -0.042493 -0.82764 0.357253 0.240436 -0.005337</acceleration>
-          <wrench>0.009676 -0.042493 -0.82764 0 -0 0</wrench>
-        </link>
-        <link name='wheel1'>
-          <pose>3.7027 -1.64037 0.080002 1.5707 2e-06 0.00027</pose>
-          <velocity>7e-06 -2.1e-05 -7.3e-05 0.000272 7.1e-05 7e-06</velocity>
-          <acceleration>0.018373 -0.030874 -1.09505 0.389071 0.211891 -0.005596</acceleration>
-          <wrench>0.018373 -0.030874 -1.09505 0 -0 0</wrench>
-        </link>
-        <link name='wheel2'>
-          <pose>3.70279 -1.97037 0.080002 1.5707 2e-06 0.00027</pose>
-          <velocity>6e-06 -2.3e-05 1.5e-05 0.000281 6.9e-05 7e-06</velocity>
-          <acceleration>0.015814 -0.036325 -0.354451 0.454062 0.200807 -0.005757</acceleration>
-          <wrench>0.015814 -0.036325 -0.354451 0 -0 0</wrench>
-        </link>
-        <link name='wheel3'>
-          <pose>3.3627 -1.64046 0.080002 1.5707 2e-06 0.00027</pose>
-          <velocity>6e-06 -2.2e-05 7.6e-05 0.000277 7.6e-05 7e-06</velocity>
-          <acceleration>0.016059 -0.034086 -0.055841 0.425906 0.204017 -0.005807</acceleration>
-          <wrench>0.016059 -0.034086 -0.055841 0 -0 0</wrench>
-        </link>
-        <link name='wheel4'>
-          <pose>3.36279 -1.97046 0.080003 1.5707 2e-06 0.00027</pose>
-          <velocity>6e-06 -2.7e-05 -3e-06 0.000274 7.5e-05 7e-06</velocity>
-          <acceleration>0.001425 -0.034977 -0.891364 0.366346 0.195043 -0.005328</acceleration>
-          <wrench>0.001425 -0.034977 -0.891364 0 -0 0</wrench>
-        </link>
+        <model name='bots_bento_arena'>
+          <pose>-0.056218 0.056252 0 0 -0 0</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose>-0.056218 0.056252 0 0 -0 0</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
       </model>
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
@@ -798,7 +1092,7 @@
     </state>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-2.73403 -0.254758 1.49967 -0 0.423643 -0.035806</pose>
+        <pose>-0.366938 -4.57215 1.82792 0 0.347643 1.3922</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>

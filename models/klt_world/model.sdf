@@ -1,0 +1,47 @@
+<?xml version='1.0'?>
+<sdf version='1.7'>
+  <model name='klt_world'>
+    <model name='bots_bento_arena'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>6 5 0.05</size>
+              <normal>0 0 1</normal>
+              <scale>1 1 1</scale>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>6 5 0.05</size>
+              <normal>0 0 1</normal>
+              <scale>1 1 1</scale>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://bots_bento_arena/materials/scripts/bots_bento_arena.material</uri>
+              <uri>model://bots_bento_arena/materials/textures/</uri>
+              <name>bots_bento_arena/Image</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+      <pose>-0 0 0 0 -0 0</pose>
+    </model>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>

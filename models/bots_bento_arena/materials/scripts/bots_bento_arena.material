@@ -1,6 +1,4 @@
-
-
-    material MyGroundPlane/Image
+    material bots_bento_arena/Image
             {
               technique
               {
