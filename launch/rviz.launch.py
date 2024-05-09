@@ -18,6 +18,7 @@ def generate_launch_description():
     robot_description_config = xacro.process_file(xacro_file)
     rviz_config_path = os.path.join(pkg_path, 'rviz','default.rviz')
     launch_rsp_path = os.path.join(pkg_path, 'launch','rsp.launch.py')
+    nav2_rviz_config_path = os.path.join(get_package_share_directory("nav2_bringup"), "rviz", "nav2_default_view.rviz")
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource(
@@ -28,7 +29,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', rviz_config_path]
+        arguments=['-d', nav2_rviz_config_path]
     )
 	
     start_joint_state_publisher_gui = Node(package='joint_state_publisher_gui',
@@ -36,9 +37,29 @@ def generate_launch_description():
         name='joint_state_publisher_gui',
         output='screen'
     )
-	
+
+    robot_localization_node = Node(
+       package='robot_localization',
+       executable='ekf_node',
+       name='ekf_filter_node',
+       output='screen',
+       parameters=[os.path.join(pkg_path, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
+    )
+
+    launch_args = DeclareLaunchArgument(name='use_sim_time', default_value='True',
+                                            description='Flag to enable use_sim_time')
+    
+    map_odom_tf = Node(
+        package="tf2_ros",
+        executable="static_transform_publisher",
+        arguments=["0", "0", "0", "0", "0", "0", "base_footprint", "base_link"]
+    )
+
     return LaunchDescription([
         rsp,
+        launch_args, 
+        robot_localization_node,
         start_rviz2,
+        map_odom_tf,
         start_joint_state_publisher_gui
     ])
