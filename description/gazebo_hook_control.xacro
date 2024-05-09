@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+ <ros2_control name='GazeboSystem' type='system'>
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+
+    <joint name="grabber_joint">
+        <command_interface name="position">
+            <param name="min">1.161</param>
+            <param name="max">1.5707</param>
+        </command_interface>
+        <state_interface name="position"/>
+    </joint>
+
+    <transmission name="grabber_transmission">
+      <plugin>transmission_interface/SimpleTransmission</plugin>
+        <actuator name="grabber_motor" role="grabber_motor"/>
+        <joint name="grabber_joint" role="grabber_joint">
+          <mechanical_reduction>1.0</mechanical_reduction>
+          <offset>0.0</offset>
+        </joint>
+    </transmission>
+  </ros2_control>
+
+  <gazebo>
+    <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+      <parameters>$(find holonomic)/config/uoz_bot_control.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

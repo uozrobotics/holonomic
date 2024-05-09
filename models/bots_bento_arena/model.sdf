@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sdf version="1.4">
-   <model name="my_ground_plane">
+   <model name="bots_bento_arena">
       <static>true</static>
       <link name="link">
          <collision name="collision">
             <geometry>
-               <plane>
+               <box>
                   <normal>0 0 1</normal>
-                  <size>6 5</size>
+                  <size>6 5 .05</size>
                   <scale>1 1 1</scale>
-               </plane>
+               </box>
             </geometry>
             <surface>
                <friction>
@@ -23,17 +23,17 @@
          <visual name="visual">
             <cast_shadows>false</cast_shadows>
             <geometry>
-               <plane>
+               <box>
                   <normal>0 0 1</normal>
-                  <size>6 5</size>
+                  <size>6 5 .05</size>
                   <scale>1 1 1</scale>
-               </plane>
+               </box>
             </geometry>
             <material>
                <script>
-                  <uri>model://my_ground_plane/materials/scripts/my_ground_plane.material</uri>
-                  <uri>model://my_ground_plane/materials/textures/</uri>
-                  <name>MyGroundPlane/Image</name>
+                  <uri>model://bots_bento_arena/materials/scripts/bots_bento_arena.material</uri>
+                  <uri>model://bots_bento_arena/materials/textures/</uri>
+                  <name>bots_bento_arena/Image</name>
                </script>
             </material>
          </visual>
