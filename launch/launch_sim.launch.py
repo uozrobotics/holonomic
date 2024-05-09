@@ -18,8 +18,8 @@ def generate_launch_description():
     # !!! MAKE SURE YOU SET THE PACKAGE NAME CORRECTLY !!!
 
     package_name='holonomic' #<--- CHANGE ME
-    klt_world = 'worlds/klt_world.world'
-    world_path = get_package_share_directory(package_name, klt_world)
+    klt_world = 'klt_world.world'
+    world_path = os.path.join(get_package_share_directory(package_name), 'worlds',  klt_world)
     world = LaunchConfiguration('world')
 
     declare_world_cmd = DeclareLaunchArgument(
